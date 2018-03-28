@@ -9,9 +9,11 @@ I used this formula:
 where:
 
 - `h` = the day of the week
+
     _(0 = Saturday, 1 = Sunday, 2 = Monday, ..., 6 = Friday)_
 - `q` = the day of the month (always 1)
 - `m` = the month
+
     _(3 = March, 4 = April, 5 = May, ..., 14 = February)_
 - `K` = `year % 100`
 - `J` = `year / 100`
