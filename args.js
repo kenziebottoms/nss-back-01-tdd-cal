@@ -1,12 +1,27 @@
 "use strict";
 
-let colors = require("colors/safe");
+const colors = require("colors/safe");
+
+let MONTHS = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december"
+];
 
 module.exports = argv => {
   let [,,...args] = argv;
   
   let month, year;
-  
+ 
   if (args.length == 0) {
     month = new Date().getMonth() + 1;
     year = new Date().getFullYear();
@@ -20,12 +35,17 @@ module.exports = argv => {
   if (args.length == 2) {
     month = validateMonth(args[0]);
     year = validateYear(args[1]);
-    return { month, year };
+    if (month && year) {
+      return { month, year };
+    } else {
+      return false;
+    }
   }
 
   if (args.length > 2) {
     return handle("Please supply only two valid integer arguments.");    
   }
+
 }
 
 const handle = err => {
@@ -35,17 +55,32 @@ const handle = err => {
 };
 
 const validateYear = year => {
-  year = parseInt(year);
-  if (year == year && year < 100000 && year > 1754) {
-    return year;
+  let yInt = parseInt(year);
+  if (!!yInt && yInt < 100000 && yInt > 1754) {
+    return yInt;
   } else {
     return handle("Please supply a valid integer year between 9999 and 1754.");
   }
 };
 const validateMonth = month => {
-  month = parseInt(month);
-  if (month == month && month < 13 && month > 0) {
-    return month;
+  let mInt = parseInt(month);
+  if (!!mInt && mInt < 13 && mInt > 0) {
+    return mInt;
+  } else if (typeof(month) == "string") {
+    return isMonth(month);
+  } else {
+    return handle("Please supply a valid month.");
+  }
+};
+
+const isMonth = str => {
+  let match = MONTHS.find((m, index) => {
+    if (m.indexOf(str.toLowerCase()) > -1) {
+      return true;
+    }
+  });
+  if (match) {
+    return MONTHS.indexOf(match)+1;
   } else {
     return handle("Please supply a valid integer month between 1 and 12.");
   }
