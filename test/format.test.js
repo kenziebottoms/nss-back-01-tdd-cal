@@ -32,3 +32,16 @@ describe("The first non-space item in the grid", () => {
     assert.isAtMost(list.indexOf(" 1"), 13);
   });
 });
+
+describe("Leap year shenanigans", () => {
+  it("Feb 2008 should have 29 days", () => {
+    let grid = format.format({ month: 2, year: 2008 });
+    let list = _.flatten(grid);
+    assert.isAtLeast(list.indexOf("29"), 0);
+  });
+  it("Feb 1900 should have 28 days", () => {
+    let grid = format.format({ month: 2, year: 1900 });
+    let list = _.flatten(grid);
+    assert.equal(list.indexOf("29"), -1);
+  });
+});
