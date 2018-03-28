@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 "use strict";
 
 let args = require("./args")(process.argv);
