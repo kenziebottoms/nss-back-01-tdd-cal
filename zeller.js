@@ -1,7 +1,9 @@
 "use strict";
 
 // ASSUMPTION: we only want the weekday of the first day of the month
-module.exports = (m, y) => {
+module.exports = ({month, year}) => {
+  let m = month;
+  let y = year;
   if (m < 3) {
     m += 12;
     y -= 1;
