@@ -1,3 +1,5 @@
 "use strict";
 
-// actual day of week calculations
+module.exports.zeller = () => {
+  return 1;
+};
