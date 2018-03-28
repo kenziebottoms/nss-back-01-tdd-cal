@@ -24,3 +24,13 @@ describe("zeller(3,2000)", () => {
     assert.equal(zeller(3, 2000), 4);
   });
 });
+describe("zeller(1,2018)", () => {
+  it("should equal 2 (Monday)", () => {
+    assert.equal(zeller(1, 2018), 2);
+  });
+});
+describe("zeller(3,2018)", () => {
+  it("should equal 5 (Thursday)", () => {
+    assert.equal(zeller(1, 2000), 0);
+  });
+});
