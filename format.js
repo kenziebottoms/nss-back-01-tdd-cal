@@ -8,14 +8,22 @@ module.exports.format = ({ month, year }) => {
   let firstDay = zeller({ month, year });
   firstDay -= 1;
   let grid = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-  let weeks = (DAYS_IN_MONTHS[month - 1] + firstDay) / 7;
+  let days_in_months = DAYS_IN_MONTHS[month - 1];
+  if (month == 2) {
+    if (year % 4 == 0) {
+      if (!(year % 100 == 0 && year % 400 != 0)) {
+        days_in_months = 29;
+      }
+    }
+  }
+  let weeks = (days_in_months + firstDay) / 7;
   for (let i = 0; i < firstDay; i++) {
     grid.push("  ");
   }
   for (let i = 1; i < 10; i++) {
     grid.push(` ${i}`);
   }
-  for (let i = 10; i <= DAYS_IN_MONTHS[month - 1]; i++) {
+  for (let i = 10; i <= days_in_months; i++) {
     grid.push(`${i}`);
   }
   return _.chunk(grid, 7);
