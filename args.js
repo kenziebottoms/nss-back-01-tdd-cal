@@ -1,21 +1,7 @@
 "use strict";
 
 const colors = require("colors/safe");
-
-let MONTHS = [
-  "january",
-  "february",
-  "march",
-  "april",
-  "may",
-  "june",
-  "july",
-  "august",
-  "september",
-  "october",
-  "november",
-  "december"
-];
+let { MONTHS } = require("./data");
 
 module.exports = argv => {
   let [,,...args] = argv;
