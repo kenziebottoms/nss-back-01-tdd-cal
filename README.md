@@ -1,26 +1,36 @@
 # Node `cal`
 If you type `cal` into your terminal, you will see an output of the current month in calendar form. Type `cal` and just a year, you'll see a whole year. Type `cal` plus a month and any year from 0 to 9999, and you'll see that month's calendar. It's pretty cool. Guess what? You can build a clone of `cal` right now.
 
-All you need is a little help from Christian Zeller, the man behind [Zeller's congruence](https://en.wikipedia.org/wiki/Zeller's_congruence). Thanks to him, we can calculate the day of the week of the first day of any month of (almost) any year. As our gift to you, we have included a snippet that shows the formula, plus how to implement it in JavaScript. We accept tokens of gratitude in cash or food.
+All you need is a little help from Christian Zeller, the man behind [Zeller's congruence](https://en.wikipedia.org/wiki/Zeller's_congruence). Thanks to him, we can calculate the day of the week of the first day of any month of (almost) any year.
+
+I used this formula:
+![assets/zeller.svg](assets/zeller.svg)
+
+where:
+
+- `h` = the day of the week
+    _(0 = Saturday, 1 = Sunday, 2 = Monday, ..., 6 = Friday)_
+- `q` = the day of the month (always 1)
+- `m` = the month
+    _(3 = March, 4 = April, 5 = May, ..., 14 = February)_
+- `K` = `year % 100`
+- `J` = `year / 100`
 
 ```js
-/***
-* h = calculated day
-* q = day
-* m = month
-* y = year
-* note: calculations must be in integers - do not use floats or it will fail.
-*
-*      /    |(m+1)*26|       | y |       | y |   | y |    \
-* h = | q + |--------| + y + |---| + 6 * |---| + |---| - 1 | mod 7
-*      \    |   10   |       | 4 |       |100|   |400|    /
-*
-***/
-function zeller(month, day, year) {
-  if (month < 3) { month += 12; year -= 1; }
-  var h = (day + parseInt(((month + 1) * 26) / 10) + year + parseInt(year / 4) + 6 * parseInt(year / 100) + parseInt(year / 400) - 1) % 7;
-  return h;
-}
+module.exports = (m, y) => {
+  if (m < 3) {
+    m += 12;
+    y -= 1;
+  }
+  let h = 1;
+  h += parseInt((13*(m+1))/5);
+  h += y % 100;
+  h += parseInt((y%100)/4);
+  h += parseInt(y/400);
+  h += 5 * parseInt(y/100);
+  h %= 7;
+  return parseInt(h);
+};
 ```
 
 ## Requirements
