@@ -1,4 +1,22 @@
 # Node `cal`
+
+![](https://img.shields.io/badge/data-none-grey.svg)
+![](https://img.shields.io/badge/modularity-nodejs-green.svg)
+![](https://img.shields.io/badge/mvp-working-green.svg)
+![](https://img.shields.io/badge/bonus-none-red.svg)
+![](https://img.shields.io/badge/testing-chai+mocha-a40802.svg)
+
+## Run locally
+```bash
+git clone git@github.com:kenziebottoms/nss-back-02-tdd-cal.git
+cd nss-back-02-tdd-cal
+npm install
+sudo chmod +x cal.js
+./cal.js [month year]
+```
+
+## Intro
+
 If you type `cal` into your terminal, you will see an output of the current month in calendar form. Type `cal` and just a year, you'll see a whole year. Type `cal` plus a month and any year from 0 to 9999, and you'll see that month's calendar. It's pretty cool. Guess what? You can build a clone of `cal` right now.
 
 All you need is a little help from Christian Zeller, the man behind [Zeller's congruence](https://en.wikipedia.org/wiki/Zeller's_congruence). Thanks to him, we can calculate the day of the week of the first day of any month of (almost) any year.
