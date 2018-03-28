@@ -1,6 +1,6 @@
 # Node `cal`
 
-![](https://img.shields.io/badge/data-none-grey.svg)
+![](https://img.shields.io/badge/data-none-lightgrey.svg)
 ![](https://img.shields.io/badge/modularity-nodejs-green.svg)
 ![](https://img.shields.io/badge/mvp-working-green.svg)
 ![](https://img.shields.io/badge/bonus-none-red.svg)
