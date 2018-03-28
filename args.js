@@ -58,6 +58,10 @@ const validateYear = year => {
   let yInt = parseInt(year);
   if (!!yInt && yInt < 100000 && yInt > 1754) {
     return yInt;
+  } else if (yInt+2000 <= new Date().getFullYear()) {
+    return yInt+2000;
+  } else if (yInt+1900) {
+    return yInt+1900;
   } else {
     return handle("Please supply a valid integer year between 9999 and 1754.");
   }
