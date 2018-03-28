@@ -1,0 +1,27 @@
+{
+  "name": "tdd-cal",
+  "version": "1.0.0",
+  "description": "If you type `cal` into your terminal, you will see an output of the current month in calendar form. Type `cal` and just a year, you'll see a whole year. Type `cal` plus a month and any year from 0 to 9999, and you'll see that month's calendar. It's pretty cool. Guess what? You can build a clone of `cal` right now.",
+  "main": "index.js",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "nodemon": "^1.17.2"
+  },
+  "devDependencies": {
+    "mocha": "^5.0.5"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenziebottoms/nss-back-02-tdd-cal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenziebottoms/nss-back-02-tdd-cal/issues"
+  },
+  "homepage": "https://github.com/kenziebottoms/nss-back-02-tdd-cal#readme"
+}
